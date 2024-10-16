@@ -1,0 +1,25 @@
+<section class="padding-sm">
+    <div>
+        <mat-form-field>
+            <mat-label>Enter your String</mat-label>
+            <textarea matInput #i></textarea>
+        </mat-form-field>
+        <button class="btn-margin-left" mat-raised-button (click)="add(i.value)">Sum</button>
+        <button class="btn-margin-left" mat-raised-button (click)="testMode = true">Run Test Data</button>
+    </div>
+
+    <div *ngIf="!testMode">
+        <p>Input: {{input}}</p>
+        {{output}}
+    </div>
+
+    <div *ngIf="testMode">
+        <ng-container *ngFor="let data of testData">
+            <p>
+                <span style="font-weight: 500;">Input:</span> {{data.replaceAll('\n','\\n')}} &nbsp; <span
+                    style="font-weight: 500; color: blue;">Output:</span>
+                <span style="color: blue;"> {{add(data, true)}} </span>
+            </p>
+        </ng-container>
+    </div>
+</section>
